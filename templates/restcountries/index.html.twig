@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RestcountriesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name countrie</th>
+                <th>Alpha2Code</th>
+                <th>Alpha3Code</th>
+               {#
+               <th>RegionalBlocs</th>
+               #} 
+                                <th>Action</th>
+
+
+        
+            </tr>
+        </thead>
+        <tbody>
+        {% for countrie in countries %}
+            <tr>
+                <td>{{ countrie.name }}</td>
+                <td>{{ countrie.alpha2Code }}</td>
+                <td>{{ countrie.alpha3Code }}</td>
+               {#
+               <td>
+                    {% for bloc in countrie.regionalBlocs %}
+                        <tr> {{ bloc.acronym }}</tr>
+                        <tr>{{ bloc.name }}</tr>
+                    {% endfor %}
+                </td>
+               #} 
+                <td>Delete countrie </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {{ knp_pagination_render(countries) }}
+
+</div>
+{% endblock %}
